@@ -9,7 +9,6 @@ import {
 import { parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
-import { sendEmail } from "@/lib/sendEmail";
 
 export const createAppointment = async (
   appointment: CreateAppointmentParams
@@ -98,32 +97,6 @@ export const updateAppointment = async ({
     if (!updatedAppointment) {
       throw new Error("Appointment not found");
     }
-
-    // Extract necessary details from the appointment object
-    const patientName = appointment.patientName;
-    const patientEmail = appointment.patientEmail;
-    const doctorName = appointment.primaryPhysician;
-    const appointmentDate = new Date(appointment.schedule).toLocaleDateString();
-    const appointmentTime = new Date(appointment.schedule).toLocaleTimeString();
-    const cancellationReason = appointment.cancellationReason;
-
-    // Prepare email content based on type
-    let emailSubject = "";
-    let emailText = "";
-
-    if (type === "cancel") {
-      emailSubject = "Appointment Cancelled";
-      emailText = `Hi, ${patientName}, your appointment with Dr. ${doctorName} on ${appointmentDate} at ${appointmentTime} has unfortunately been cancelled. Reason: ${cancellationReason}`;
-    } else if (type === "schedule") {
-      emailSubject = "Appointment Scheduled";
-      emailText = `Hi, ${patientName}, your appointment with Dr. ${doctorName} on ${appointmentDate} at ${appointmentTime} has been scheduled.`;
-    }
-
-    await sendEmail({
-      to: patientEmail,
-      subject: emailSubject,
-      text: emailText,
-    });
 
     revalidatePath("/admin");
     return parseStringify(updatedAppointment);
