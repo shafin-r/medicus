@@ -84,24 +84,6 @@ const Vaccination = () => {
     fetchVaccines();
   }, [userId]);
 
-  // Update statuses based on current date
-  const updatedAppointments = useMemo(() => {
-    return vaccinationAppointments.map((appointment) => {
-      const appointmentDate = new Date(
-        `${appointment.date}T${appointment.time}`
-      );
-      return {
-        ...appointment,
-        status:
-          appointmentDate < currentDate
-            ? "Taken"
-            : appointmentDate.toDateString() === currentDate.toDateString()
-            ? "Today"
-            : "Upcoming",
-      };
-    });
-  }, [vaccinationAppointments, currentDate]);
-
   // Handle Booking
   const handleBooking = async (e) => {
     e.preventDefault();

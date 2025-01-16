@@ -193,7 +193,7 @@ const AppointmentBooking = () => {
             </div>
             <div>
               <label className="block text-gray-600 mb-2">
-                What's the reason?
+                What&apos;s the reason?
               </label>
               <input
                 type="text"

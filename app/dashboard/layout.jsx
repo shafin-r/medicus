@@ -32,7 +32,11 @@ export default function DashboardLayout({ children }) {
       <body className={workSans.className}>
         <header className="flex justify-between px-60 py-4 bg-background border-b-[1px] border-accent">
           <Link href={"/dashboard"}>
-            <Image src={require("@/public/static/logo-full.svg")} height={40} />
+            <Image
+              src={require("@/public/static/logo-full.svg")}
+              height={40}
+              alt="logo"
+            />
           </Link>
           <div className="flex gap-10 items-center">
             <a href="#" className="text-text">
