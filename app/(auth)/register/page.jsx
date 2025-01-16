@@ -72,7 +72,7 @@ const Register = () => {
           src={"/static/register-splash.jpg"}
           width={1000}
           height={1000}
-          className=""
+          alt="register"
         />
       </section>
       <section className="w-1/2 p-20 space-y-12 flex flex-col items-center justify-center">
@@ -82,6 +82,7 @@ const Register = () => {
             width={200}
             height={1000}
             className="mb-4"
+            alt="logo"
           />
           <h1 className="text-white text-5xl tracking-tighter font-bold">
             Create an account

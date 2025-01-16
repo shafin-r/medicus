@@ -10,7 +10,7 @@ export default function Home() {
     <main className="bg-[#070E06] min-h-screen">
       <section className="py-[40px] px-[80px]">
         <header className="flex items-center justify-between">
-          <Image src="/static/logo.png" width={200} height={1000} />
+          <Image src="/static/logo.png" width={200} height={1000} alt="logo" />
           <div className="flex flex-row gap-80 text-lg">
             <Link href={"/about"} className="text-white font-medium">
               About
@@ -50,7 +50,12 @@ export default function Home() {
         </div>
         <div className="flex-row justify-between flex items-center">
           <div className="w-1/2">
-            <Image src="/icons/hero-arrow.png" width={100} height={50} />
+            <Image
+              src="/icons/hero-arrow.png"
+              width={100}
+              height={50}
+              alt="hero"
+            />
           </div>
           <div className="w-1/2 px-32 flex flex-col gap-4">
             <p className="text-[#E5F5E5] text-4xl tracking-tighter font-normal">

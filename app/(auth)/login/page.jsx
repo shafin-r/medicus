@@ -25,6 +25,7 @@ const Login = () => {
 
   useEffect(() => {
     checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleLogin(email, password) {
@@ -44,7 +45,7 @@ const Login = () => {
     >
       <section className="w-1/2 p-20 space-y-12 flex flex-col items-center justify-center">
         <div className="space-y-4">
-          <Image src="/static/logo.png" width={200} height={1000} />
+          <Image src="/static/logo.png" width={200} height={1000} alt="logo" />
           <h1 className="text-white text-5xl  tracking-tight font-bold">
             Login to your account
           </h1>
@@ -82,7 +83,7 @@ const Login = () => {
           >
             Login
           </button>
-          <p className="text-text">Don't have an account?</p>
+          <p className="text-text">Don&apos;t have an account?</p>
           <button
             onClick={() => router.push("/register")}
             className="w-full text-text bg-blue-500 h-12 rounded-2xl"
@@ -96,7 +97,7 @@ const Login = () => {
           src={"/static/login-splash.jpg"}
           width={1000}
           height={1000}
-          className=""
+          alt="login-splash"
         />
       </section>
     </main>

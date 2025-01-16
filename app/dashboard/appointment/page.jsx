@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { databases, account } from "@/app/appwrite";
 import { Query } from "appwrite"; // Import Appwrite services
 
@@ -97,24 +97,6 @@ const AppointmentBooking = () => {
 
     fetchAppointments();
   }, [userId]);
-
-  // Update statuses based on current date
-  const updatedAppointments = useMemo(() => {
-    return appointments.map((appointment) => {
-      const appointmentDateTime = new Date(
-        `${appointment.date}T${appointment.time}Z`
-      );
-      return {
-        ...appointment,
-        status:
-          appointmentDateTime < currentDate
-            ? "Completed"
-            : appointmentDateTime.toDateString() === currentDate.toDateString()
-            ? "Today"
-            : "Upcoming",
-      };
-    });
-  }, [appointments, currentDate]);
 
   // Handle Booking
   const handleBooking = async (e) => {
